@@ -36,6 +36,7 @@ public:
 class Library
 {
 private:
+    static const int MAX_BOOKS = 100; // Move MAX_BOOKS here
     Book books[MAX_BOOKS]; // Array to store Book objects
     int bookCount; // Current number of books in the library
 
@@ -67,7 +68,6 @@ public:
         cin.ignore();
         getline(cin, title);
 
-
         // Check if the book is already in the library
         for (int i = 0; i < bookCount; ++i)
         {
@@ -81,8 +81,19 @@ public:
         cout << "Enter the author's name: ";
         getline(cin, author);
 
-        cout << "Enter the year of publication: ";
-        cin >> year;
+        // Input validation for year
+        while (true) {
+            cout << "Enter the year of publication: ";
+            cin >> year;
+
+            if (cin.fail() || year <= 0) {
+                cin.clear(); // Clear the error flag
+                cin.ignore(1000, '\n'); // Ignore invalid input
+                cout << "Invalid year. Please enter a positive number greater than 0." << endl;
+            } else {
+                break; // Valid input, exit the loop
+            }
+        }
 
         // Add the new book to the library
         books[bookCount].setBookDetails(title, author, year);
@@ -120,17 +131,11 @@ public:
         getline(cin, title);
         ConvertToUpper(title);
 
-
-
         bool found = false;
         for (int i = 0; i < bookCount; ++i)
         {
-
-
             string bookTitle = books[i].getTitle();
             ConvertToUpper(bookTitle);
-
-
 
             if (bookTitle == title)
             {
@@ -194,6 +199,7 @@ void ShowMenu(Library &lib)
                 break;
             case 4:
                 system("cls");
+                return; // Exit the loop and terminate the program
             default:
                 // This case is technically unreachable due to previous validation
                 break;
