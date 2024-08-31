@@ -120,10 +120,19 @@ public:
         getline(cin, title);
         ConvertToUpper(title);
 
+       
+
         bool found = false;
         for (int i = 0; i < bookCount; ++i)
         {
-            if (books[i].getTitle() == title)
+         
+
+            string bookTitle = books[i].getTitle();
+            ConvertToUpper(bookTitle);
+
+           
+
+            if (bookTitle == title)
             {
                 cout << "Book found!" << endl;
                 cout << "Title: " << books[i].getTitle() << endl;
@@ -156,26 +165,26 @@ void ShowMenu(Library &lib)
 
         switch (choice)
         {
-        case 1:
-            system("cls");
-            lib.AddBook();
-            break;
-        case 2:
-            system("cls");
-            lib.DisplayBooks();
-            break;
-        case 3:
-            system("cls");
-            lib.FindBook();
-            break;
-        case 4:
-            system("cls");
-            return;
-        default:
-            system("cls");
-            cout << "Invalid choice, please try again." << endl;
-            cin.clear();
-            break;
+            case 1:
+                system("cls");
+                lib.AddBook();
+                break;
+            case 2:
+                system("cls");
+                lib.DisplayBooks();
+                break;
+            case 3:
+                system("cls");
+                lib.FindBook();
+                break;
+            case 4:
+                system("cls");
+                return;
+            default:
+                system("cls");
+                cout << "Invalid choice, please try again." << endl;
+                cin.clear();
+                break;
         }
     }
 }
