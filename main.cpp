@@ -36,7 +36,6 @@ public:
 class Library
 {
 private:
-    static const int MAX_BOOKS = 100; // Move MAX_BOOKS here
     Book books[MAX_BOOKS]; // Array to store Book objects
     int bookCount; // Current number of books in the library
 
