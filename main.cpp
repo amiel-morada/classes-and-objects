@@ -23,13 +23,6 @@ public:
     string getTitle() const { return title; }
     string getAuthor() const { return author; }
     int getYear() const { return year; }
-
-    // Function to set book details
-    void setBookDetails(string t, string a, int y) {
-        title = t;
-        author = a;
-        year = y;
-    }
 };
 
 // Class for managing the library and its collection of books
@@ -95,7 +88,8 @@ public:
         }
 
         // Add the new book to the library
-        books[bookCount].setBookDetails(title, author, year);
+        Book book(title, author, year);
+        books[bookCount] = book;
         ++bookCount;
         cout << "Book successfully added!" << endl;
     }
