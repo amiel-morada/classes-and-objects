@@ -120,17 +120,17 @@ public:
         getline(cin, title);
         ConvertToUpper(title);
 
-       
+
 
         bool found = false;
         for (int i = 0; i < bookCount; ++i)
         {
-         
+
 
             string bookTitle = books[i].getTitle();
             ConvertToUpper(bookTitle);
 
-           
+
 
             if (bookTitle == title)
             {
@@ -154,17 +154,32 @@ public:
 void ShowMenu(Library &lib)
 {
     int choice;
-    while (true)
-    {
+
+    while (true) {
         cout << "\nLibrary Menu" << endl;
         cout << "1 - Add a Book" << endl;
         cout << "2 - Show All Books" << endl;
         cout << "3 - Search for a Book" << endl;
         cout << "4 - Exit" << endl;
-        cin >> choice;
 
-        switch (choice)
-        {
+        // Input validation loop
+        while (true) {
+            cout << "Enter your choice (1-4): ";
+            cin >> choice;
+
+            // Check if input is an integer
+            if (cin.fail()) {
+                cin.clear(); // Clear the error flag
+                cin.ignore(1000, '\n'); // Ignore invalid input
+                cout << "Invalid input. Choose between 1-4 only." << endl;
+            } else if (choice < 1 || choice > 4) {
+                cout << "Invalid choice. Choose between 1-4 only." << endl;
+            } else {
+                break; // Valid input, exit the validation loop
+            }
+        }
+
+        switch (choice) {
             case 1:
                 system("cls");
                 lib.AddBook();
@@ -179,11 +194,8 @@ void ShowMenu(Library &lib)
                 break;
             case 4:
                 system("cls");
-                return;
             default:
-                system("cls");
-                cout << "Invalid choice, please try again." << endl;
-                cin.clear();
+                // This case is technically unreachable due to previous validation
                 break;
         }
     }
