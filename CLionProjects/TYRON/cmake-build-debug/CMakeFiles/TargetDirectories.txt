@@ -1,0 +1,3 @@
+C:/Users/Amieljan/CLionProjects/TYRON/cmake-build-debug/CMakeFiles/TYRON.dir
+C:/Users/Amieljan/CLionProjects/TYRON/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Amieljan/CLionProjects/TYRON/cmake-build-debug/CMakeFiles/rebuild_cache.dir
